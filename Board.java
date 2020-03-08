@@ -15,43 +15,64 @@ public class Board {
             }
         }
 
-        // White pawns
-        for(int x=0; x<8; x++){
-            board[1][x] = new Pawn("white");
-        }
+        whitePawns();
 
-        // Black pawns
-        for(int x=0; x<8; x++){
-            board[6][x] = new Pawn("black");
-        }
+        blackPawns();
 
-        //Rooks
-        board[0][0] = new Rook("white");
-        board[0][7] = new Rook("white");
-        board[7][7] = new Rook("black");
-        board[7][0] = new Rook("black");
+        rooks();
 
-        //Knights
-        board[0][1] = new Knight("white");
-        board[0][6] = new Knight("white");
-        board[7][6] = new Knight("black");
-        board[7][1] = new Knight("black");
+        knights();
 
-        //Bishops
-        board[0][2] = new Bishop("white");
+        bishops();
+
+        queens();
+
+        kings();
+
+    }
+
+	protected void kings() {
+		board[0][4] = new King("white");
+        board[7][4] = new King("black");
+	}
+
+	protected void queens() {
+		board[0][3] = new Queen("white");
+        board[7][3] = new Queen("black");
+	}
+
+	protected void bishops() {
+		board[0][2] = new Bishop("white");
         board[0][5] = new Bishop("white");
         board[7][2] = new Bishop("black");
         board[7][5] = new Bishop("black");
+	}
 
-        //Queens
-        board[0][3] = new Queen("white");
-        board[7][3] = new Queen("black");
+	protected void knights() {
+		board[0][1] = new Knight("white");
+        board[0][6] = new Knight("white");
+        board[7][6] = new Knight("black");
+        board[7][1] = new Knight("black");
+	}
 
-        //Kings
-        board[0][4] = new King("white");
-        board[7][4] = new King("black");
+	protected void rooks() {
+		board[0][0] = new Rook("white");
+        board[0][7] = new Rook("white");
+        board[7][7] = new Rook("black");
+        board[7][0] = new Rook("black");
+	}
 
-    }
+	protected void blackPawns() {
+		for(int x=0; x<8; x++){
+            board[6][x] = new Pawn("black");
+        }
+	}
+
+	protected void whitePawns() {
+		for(int x=0; x<8; x++){
+            board[1][x] = new Pawn("white");
+        }
+	}
 
     /**
      * Checks to see if the king of the given color is in check. This will be called twice after every move
